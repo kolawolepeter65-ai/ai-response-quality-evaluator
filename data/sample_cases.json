@@ -1,0 +1,122 @@
+[
+  {
+    "id": "follow-001",
+    "prompt": "Explain RLHF in no more than 20 words. Include the word feedback.",
+    "rules": [
+      {
+        "type": "max_words",
+        "value": 20
+      },
+      {
+        "type": "must_include",
+        "value": "feedback"
+      }
+    ],
+    "responses": {
+      "A": "RLHF uses human feedback to help train models toward preferred outputs.",
+      "B": "Reinforcement learning from human preferences is a technique for improving how artificial intelligence systems behave by using ratings and preference comparisons collected from people across many prompts."
+    }
+  },
+  {
+    "id": "follow-002",
+    "prompt": "Answer in exactly two lines. Start with 'Answer:' and do not mention robots.",
+    "rules": [
+      {
+        "type": "exact_lines",
+        "value": 2
+      },
+      {
+        "type": "starts_with",
+        "value": "Answer:"
+      },
+      {
+        "type": "must_not_include",
+        "value": "robots"
+      }
+    ],
+    "responses": {
+      "A": "Answer: AI models learn patterns.\nHuman evaluation helps assess outputs.",
+      "B": "AI models can be useful, and robots can help."
+    }
+  },
+  {
+    "id": "follow-003",
+    "prompt": "Define hallucination. Include unsupported and avoid always.",
+    "rules": [
+      {
+        "type": "must_include",
+        "value": "unsupported"
+      },
+      {
+        "type": "must_not_include",
+        "value": "always"
+      },
+      {
+        "type": "max_words",
+        "value": 35
+      }
+    ],
+    "responses": {
+      "A": "An AI hallucination is content presented as factual even when it is unsupported or incorrect.",
+      "B": "AI systems always hallucinate when they generate answers."
+    }
+  },
+  {
+    "id": "follow-004",
+    "prompt": "Describe annotation QA in 15 words or fewer, using consistency.",
+    "rules": [
+      {
+        "type": "max_words",
+        "value": 15
+      },
+      {
+        "type": "must_include",
+        "value": "consistency"
+      }
+    ],
+    "responses": {
+      "A": "Annotation QA checks label consistency and identifies errors in datasets.",
+      "B": "Annotation quality assurance ensures datasets are correct, understandable, and useful for training and evaluating AI models."
+    }
+  },
+  {
+    "id": "follow-005",
+    "prompt": "Begin with Risk: and mention privacy. Do not include guaranteed.",
+    "rules": [
+      {
+        "type": "starts_with",
+        "value": "Risk:"
+      },
+      {
+        "type": "must_include",
+        "value": "privacy"
+      },
+      {
+        "type": "must_not_include",
+        "value": "guaranteed"
+      }
+    ],
+    "responses": {
+      "A": "Risk: Poor handling of user data can compromise privacy.",
+      "B": "Privacy is guaranteed when using an AI tool."
+    }
+  },
+  {
+    "id": "follow-006",
+    "prompt": "Give a two-line description of preference ranking, including better.",
+    "rules": [
+      {
+        "type": "exact_lines",
+        "value": 2
+      },
+      {
+        "type": "must_include",
+        "value": "better"
+      }
+    ],
+    "responses": {
+      "A": "Compare two answers to the same prompt.\nChoose which is better using a rubric.",
+      "B": "Choose the preferred answer."
+    }
+  }
+]
