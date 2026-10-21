@@ -1,60 +1,47 @@
 # AI Response Quality Evaluator
 
-A small, reproducible **AI evaluation portfolio project** that compares two sample AI responses against explicit prompt instructions and ranks them by compliance.
+[**Launch interactive demo**](https://ai-response-quality-evaluator-uteuquyrrjmtj6jjbw5h8z.streamlit.app/)
 
-**Skills:** LLM evaluation · response ranking · rubric-based assessment · instruction following · data quality · Python
+A reproducible portfolio tool for assessing candidate LLM responses. Two modes:
 
-## Live interactive app
+1. **Rule-based evaluation**: deterministic checks for required phrases, forbidden phrases, word limits, prefixes, and line counts. No API key.
+2. **AI Judge**: optional Gemini 2.5 Flash-powered comparative evaluation of **accuracy, relevance, clarity, completeness, and instruction following**, with 1–5 rubric scores and a rationale. Bring your own Gemini API key.
 
-The Streamlit interface lets you paste two answers, configure instruction checks, and compare scores with a per-rule audit.
+AI-judged results are **subjective model assessments**, not verified facts or human ground truth. The judge may make mistakes, be inconsistent, or exhibit biases. This project does not implement RLHF training, and its example responses are synthetic.
 
-Run locally:
+## Run locally
+
+Requires Python 3.9+.
 
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-To host a public demo, visit [Streamlit Community Cloud](https://share.streamlit.io/), choose **Create app**, select this repository's `main` branch, and set the entry point to `app.py`. The hosting URL is created by Streamlit after deployment; it is not live yet.
+Get a Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey). In AI Judge mode, paste it into the password field (never commit it to GitHub). API pricing, quotas, and provider data handling policies apply.
 
-## Features
-
-- Evaluates required or prohibited phrases, word limits, response prefixes, and exact line counts
-- Scores each response from **0–100** based on proportion of constraints passed
-- Compares response A and B, including ties
-- Produces auditable per-rule results in JSON
-- Includes six synthetic example pairs and four unit tests
-- No API key, paid service, or third-party package required
-
-## Run
-
-Requires Python 3.9+.
+## CLI benchmark and tests
 
 ```bash
 python evaluator.py
 python -m unittest discover -s tests -v
 ```
 
-The first command creates `results.json` with scores and per-rule results. For custom datasets:
+Example comparison pairs live in `data/sample_cases.json`. The CLI writes detailed per-rule scores to `results.json`. Supported checks are `must_include`, `must_not_include`, `max_words`, `starts_with`, `exact_lines`. Each receives equal weight in the deterministic mode.
 
-```bash
-python evaluator.py --data data/sample_cases.json --output results.json
-```
+## Responsible use
 
-## Evaluation format
+- Never upload client secrets, private data, or confidential evaluation-platform tasks.
+- Avoid using LLM judge scores as factual verification or as definitive human preference labels.
+- An API key entered in the deployed app is sent to Google's Gemini API for the requested inference. This app does not intentionally persist the key. Consider Streamlit host access, Google provider terms, and fees.
+- No hidden retrieval or independent external fact-checking is provided.
 
-Each case in `data/sample_cases.json` has an ID, prompt, rules, and two candidate responses. Supported rules: `must_include`, `must_not_include`, `max_words`, `starts_with`, and `exact_lines`.
+## Portfolio skills
 
-Each rule is equally weighted. The highest-scoring candidate wins; equal scores yield a tie.
-
-## Scope and limitations
-
-**This is a deterministic instruction-following benchmark, not an LLM-powered judge.** The illustrative responses are synthetic, not collected from real models. It does *not* verify factual correctness, helpfulness, or safety; and it does not constitute full RLHF evaluation. Simple substring matching and whitespace word counting have known edge cases. Further work could add human labels, fact-checking, inter-annotator agreement, and a genuine LLM-as-judge component.
-
-Never publish confidential evaluation-platform tasks, private client data, or proprietary AI model outputs.
+LLM-as-a-judge · rubric design · response ranking · instruction-following evaluation · validation · Python · Streamlit · API integration · quality assurance
 
 ## Author
 
-**Kolawole Peter Olusola** — AI Evaluation & Data Quality Portfolio
+**Kolawole Peter Olusola**
 
 [Portfolio](https://techbykhay.site/) · [LinkedIn](https://www.linkedin.com/in/kolawole-peter-olusola/) · [Behance](https://www.behance.net/kolawolepeter2/)
