@@ -1,5 +1,7 @@
 # AI Response Quality Evaluator
 
+[![Python Tests](https://github.com/kolawolepeter65-ai/ai-response-quality-evaluator/actions/workflows/tests.yml/badge.svg)](https://github.com/kolawolepeter65-ai/ai-response-quality-evaluator/actions/workflows/tests.yml)
+
 [**Launch interactive demo**](https://ai-response-quality-evaluator-uteuquyrrjmtj6jjbw5h8z.streamlit.app/)
 
 A reproducible portfolio tool for assessing candidate LLM responses. Two modes:
