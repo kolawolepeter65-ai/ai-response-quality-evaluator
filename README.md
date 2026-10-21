@@ -4,6 +4,19 @@ A small, reproducible **AI evaluation portfolio project** that compares two samp
 
 **Skills:** LLM evaluation · response ranking · rubric-based assessment · instruction following · data quality · Python
 
+## Live interactive app
+
+The Streamlit interface lets you paste two answers, configure instruction checks, and compare scores with a per-rule audit.
+
+Run locally:
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+To host a public demo, visit [Streamlit Community Cloud](https://share.streamlit.io/), choose **Create app**, select this repository's `main` branch, and set the entry point to `app.py`. The hosting URL is created by Streamlit after deployment; it is not live yet.
+
 ## Features
 
 - Evaluates required or prohibited phrases, word limits, response prefixes, and exact line counts
